@@ -9,7 +9,7 @@ import { gsapHeadingAnimation } from '../scripts/Animations/animations.js';
 
 renderWeatherInputFades();
 
-//gsapHeadingAnimation();
+gsapHeadingAnimation();
 
 submitCityAndHideHeading();
 
