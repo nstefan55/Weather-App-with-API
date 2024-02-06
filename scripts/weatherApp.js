@@ -9,7 +9,7 @@ import { gsapHeadingAnimation } from '../scripts/Animations/animations.js';
 
 renderWeatherInputFades();
 
-//gsapHeadingAnimation();
+gsapHeadingAnimation();
 
 submitCityAndHideHeading();
 
@@ -56,9 +56,9 @@ async function getCurrentWeatherData(city) {
 }
 
 function displayWeatherInfo(data) {
-  hideHeadingTitle();
+  //console.log(data);
 
-  console.log(data);
+  hideHeadingTitle();
 
   const weatherContent = document.querySelector('.js-main-weather-content');
 
@@ -101,7 +101,8 @@ function displayWeatherInfo(data) {
 
     let formatedSunrise = sunriseHours + ':' + sunriseMinutes.substr(-2);
 
-    const weatherHtml = `<div class="weather-card container-grid">
+    const weatherHtml = `
+    <div class="weather-card container-grid">
       <div class="city-container">
         <h1 class="cityDisplay">${city}</h1>
         <p class="weatherIcon"></p>
@@ -192,10 +193,15 @@ function displayWeatherInfo(data) {
         </div>
       </div>
 
-      <br /><br />
-
-      
     </div>
+
+    <br /><br />
+
+    <div class="weather-card flex-center"> 
+      <button type="submit" class="weather-submit-btn get-forecast-btn" id="forecastButton">Get Forecast Weather</button>
+    </div>
+    
+  
     `;
     weatherContent.innerHTML = weatherHtml;
 
@@ -204,6 +210,14 @@ function displayWeatherInfo(data) {
     errorContainer.innerHTML = '';
 
     errorContainer.classList.remove('messageDisplay');
+
+    //Forecast Weather Section
+
+    const forecastContent = document.getElementById('forecastButton');
+
+    forecastContent.addEventListener('submit', async (event) => {
+      event.preventDefault();
+    });
   }
 }
 

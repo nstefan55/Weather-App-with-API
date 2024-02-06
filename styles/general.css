@@ -100,6 +100,11 @@ p {
   justify-content: center;
 }
 
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
 /* Margins */
 
 .m-r-2 {
