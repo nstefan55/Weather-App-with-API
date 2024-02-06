@@ -1,5 +1,5 @@
 
-Weather App with [OpenWeather.api] (https://openweathermap.org/)https://openweathermap.org/
+Weather App with https://openweathermap.org/
 
 
 Project not yet finished!
