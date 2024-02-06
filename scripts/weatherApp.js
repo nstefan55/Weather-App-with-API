@@ -9,7 +9,7 @@ import { gsapHeadingAnimation } from '../scripts/Animations/animations.js';
 
 renderWeatherInputFades();
 
-gsapHeadingAnimation();
+//gsapHeadingAnimation();
 
 submitCityAndHideHeading();
 
@@ -191,6 +191,10 @@ function displayWeatherInfo(data) {
           <p class="sunsetTime">${formatedSunrise}</p>
         </div>
       </div>
+
+      <br /><br />
+
+      
     </div>
     `;
     weatherContent.innerHTML = weatherHtml;
