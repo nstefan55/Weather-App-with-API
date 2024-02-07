@@ -89,7 +89,7 @@ function displayWeatherInfo(data) {
 
     let sunsetMinutes = '0' + sunsetDate.getMinutes();
 
-    let formatedSunset = sunsetHours + ':' + sunsetMinutes.substr(-2);
+    let formattedSunset = sunsetHours + ':' + sunsetMinutes.substr(-2);
 
     let unix_sunrise = sunrise;
 
@@ -99,7 +99,7 @@ function displayWeatherInfo(data) {
 
     let sunriseMinutes = '0' + sunriseDate.getMinutes();
 
-    let formatedSunrise = sunriseHours + ':' + sunriseMinutes.substr(-2);
+    let formattedSunrise = sunriseHours + ':' + sunriseMinutes.substr(-2);
 
     const weatherHtml = `<div class="weather-card container-grid">
       <div class="city-container">
@@ -130,8 +130,8 @@ function displayWeatherInfo(data) {
           <h1 class="windDisplay">Wind</h1>
         </div>
         <div class="second-grid-container">
-          <p class="wind-km-display">${speed.toFixed(1)} m/s</p>
-          <p class="wind-deg-display">${deg.toFixed(1)} deg</p>
+          <p class="wind-km-display">${formatWindSpeed(speed)} m/s</p>
+          <p class="wind-deg-display">${formatWindDeg(deg)} deg</p>
         </div>
       </div>
 
@@ -179,7 +179,7 @@ function displayWeatherInfo(data) {
           <h1 class="sunsetDisplay">Sunset</h1>
         </div>
         <div class="flex-column">
-          <p class="sunsetTime">${formatedSunset}</p>
+          <p class="sunsetTime">${formattedSunset}</p>
         </div>
       </div>
 
@@ -188,7 +188,7 @@ function displayWeatherInfo(data) {
           <h1 class="sunriseDisplay">Sunrise</h1>
         </div>
         <div class="flex-column">
-          <p class="sunsetTime">${formatedSunrise}</p>
+          <p class="sunsetTime">${formattedSunrise}</p>
         </div>
       </div>
 
@@ -225,19 +225,43 @@ function displayError(message) {
 }
 
 function formatToCelcius(temp) {
-  return Math.round(temp - 273.15).toFixed(1);
+  const formattedTemp = Math.round(temp - 273.15).toFixed(1);
+  return formattedTemp.endsWith('.0')
+    ? formattedTemp.slice(0, -2)
+    : formattedTemp;
 }
 
 function formatFeelsTemp(feels_like) {
-  return Math.round(feels_like - 273.15).toFixed(1);
+  const formattedFeelsTemp = Math.round(feels_like - 273.15).toFixed(1);
+  return formattedFeelsTemp.endsWith('.0')
+    ? formattedFeelsTemp.slice(0, -2)
+    : formattedFeelsTemp;
 }
 
 function formatMinToCelcius(temp_min) {
-  return Math.round(temp_min - 273.15).toFixed(1);
+  const formattedMinToCelcius = Math.round(temp_min - 273.15).toFixed(1);
+  return formattedMinToCelcius.endsWith('.0')
+    ? formattedMinToCelcius.slice(0, -2)
+    : formattedMinToCelcius;
 }
 
 function formatMaxToCelcius(temp_max) {
-  return Math.round(temp_max - 273.15).toFixed(1);
+  const formattedMaxToCelcius = Math.round(temp_max - 273.15).toFixed(1);
+  return formattedMaxToCelcius.endsWith('.0')
+    ? formattedMaxToCelcius.slice(0, -2)
+    : formattedMaxToCelcius;
+}
+
+function formatWindSpeed(speed) {
+  const formattedSpeed = speed.toFixed(1);
+  return formattedSpeed.endsWith('.0')
+    ? formattedSpeed.slice(0, -2)
+    : formattedSpeed;
+}
+
+function formatWindDeg(deg) {
+  const formattedDeg = deg.toFixed(1);
+  return formattedDeg.endsWith('.0') ? formattedDeg.slice(0, -2) : formattedDeg;
 }
 
 function convertIntoKm(visibility) {
