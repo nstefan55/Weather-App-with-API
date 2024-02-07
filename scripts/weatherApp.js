@@ -81,26 +81,6 @@ function displayWeatherInfo(data) {
       city = 'Zagreb';
     }
 
-    let unix_sunset = sunset;
-
-    let sunsetDate = new Date(unix_sunset * 1000);
-
-    let sunsetHours = sunsetDate.getHours();
-
-    let sunsetMinutes = '0' + sunsetDate.getMinutes();
-
-    let formattedSunset = sunsetHours + ':' + sunsetMinutes.substr(-2);
-
-    let unix_sunrise = sunrise;
-
-    let sunriseDate = new Date(unix_sunrise * 1000);
-
-    let sunriseHours = sunriseDate.getHours();
-
-    let sunriseMinutes = '0' + sunriseDate.getMinutes();
-
-    let formattedSunrise = sunriseHours + ':' + sunriseMinutes.substr(-2);
-
     const weatherHtml = `<div class="weather-card container-grid">
       <div class="city-container">
         <h1 class="cityDisplay">${city}</h1>
@@ -179,7 +159,7 @@ function displayWeatherInfo(data) {
           <h1 class="sunsetDisplay">Sunset</h1>
         </div>
         <div class="flex-column">
-          <p class="sunsetTime">${formattedSunset}</p>
+          <p class="sunsetTime">${formatSunset(sunset)}</p>
         </div>
       </div>
 
@@ -188,7 +168,7 @@ function displayWeatherInfo(data) {
           <h1 class="sunriseDisplay">Sunrise</h1>
         </div>
         <div class="flex-column">
-          <p class="sunsetTime">${formattedSunrise}</p>
+          <p class="sunsetTime">${formatSunrise(sunrise)}</p>
         </div>
       </div>
 
@@ -266,4 +246,32 @@ function formatWindDeg(deg) {
 
 function convertIntoKm(visibility) {
   return visibility / 1000;
+}
+
+function formatSunset(sunset) {
+  let unix_sunset = sunset;
+
+  let sunsetDate = new Date(unix_sunset * 1000);
+
+  let sunsetHours = sunsetDate.getHours();
+
+  let sunsetMinutes = '0' + sunsetDate.getMinutes();
+
+  let formattedSunset = sunsetHours + ':' + sunsetMinutes.substr(-2);
+
+  return formattedSunset;
+}
+
+function formatSunrise(sunrise) {
+  let unix_sunrise = sunrise;
+
+  let sunriseDate = new Date(unix_sunrise * 1000);
+
+  let sunriseHours = sunriseDate.getHours();
+
+  let sunriseMinutes = '0' + sunriseDate.getMinutes();
+
+  let formattedSunrise = sunriseHours + ':' + sunriseMinutes.substr(-2);
+
+  return formattedSunrise;
 }
