@@ -72,14 +72,7 @@ function displayWeatherInfo(data) {
       wind: { speed, deg },
     } = data;
 
-    if (
-      cityInput.value === 'zagreb' ||
-      cityInput.value === 'Zagreb' ||
-      cityInput.value === 'Grad Zagreb' ||
-      cityInput.value === 'grad zagreb'
-    ) {
-      city = 'Zagreb';
-    }
+    city = checkCityZagreb(cityInput, city);
 
     const weatherHtml = `<div class="weather-card container-grid">
       <div class="city-container">
@@ -274,4 +267,17 @@ function formatSunrise(sunrise) {
   let formattedSunrise = sunriseHours + ':' + sunriseMinutes.substr(-2);
 
   return formattedSunrise;
+}
+
+function checkCityZagreb(cityInput, city) {
+  if (
+    cityInput.value === 'zagreb' ||
+    cityInput.value === 'Zagreb' ||
+    cityInput.value === 'Grad Zagreb' ||
+    cityInput.value === 'grad zagreb'
+  ) {
+    return 'Zagreb';
+  }
+
+  return city;
 }
