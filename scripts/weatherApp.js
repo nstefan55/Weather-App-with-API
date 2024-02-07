@@ -221,7 +221,7 @@ function displayError(message) {
   timeoutId = setTimeout(() => {
     document.querySelector('.errorContainer').classList.add('displayNone');
     showHeadingTitle();
-  }, 8000);
+  }, 7000);
 }
 
 function formatToCelcius(temp) {
