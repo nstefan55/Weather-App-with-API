@@ -170,11 +170,6 @@ function displayWeatherInfo(data) {
 
     <br /><br />
 
-    <div class="weather-card flex-center"> 
-      <button type="submit" class="weather-submit-btn get-forecast-btn" id="forecastButton">Get Forecast Weather</button>
-    </div>
-    
-  
     `;
     weatherContent.innerHTML = weatherHtml;
 
@@ -183,14 +178,6 @@ function displayWeatherInfo(data) {
     errorContainer.innerHTML = '';
 
     errorContainer.classList.remove('messageDisplay');
-
-    //Forecast Weather Section
-
-    const forecastContent = document.getElementById('forecastButton');
-
-    forecastContent.addEventListener('submit', async (event) => {
-      event.preventDefault();
-    });
   }
 }
 
