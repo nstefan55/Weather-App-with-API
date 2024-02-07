@@ -78,7 +78,7 @@ function displayWeatherInfo(data) {
     <div class="weather-card container-grid">
       <div class="city-container">
         <h1 class="cityDisplay">${city}</h1>
-        <p class="weatherIcon"></p>
+        <p class="weatherIcon">${getWeatherEmoji(id)}</p>
       </div>
 
       <div class="temp-container">
@@ -181,7 +181,33 @@ function displayWeatherInfo(data) {
   }
 }
 
-function getWeatherEmoji(weatherId) {}
+function getWeatherEmoji(weatherId) {
+  switch (true) {
+    case weatherId >= 200 && weatherId < 300: //id : thunderstorm
+      return '<i class="fa-solid fa-cloud-bolt thunderstorm-emoji"></i>';
+
+    case weatherId >= 400 && weatherId < 400: //id : Rain/Drizzle Rain
+      return '<i class="fa-solid fa-cloud-rain cloud-rain-emoji"></i>';
+
+    case weatherId >= 500 && weatherId < 600: //id : Heavy Rain
+      return '<i class="fa-solid fa-cloud-showers-heavy cloud-showers-heavy-emoji"></i>';
+
+    case weatherId >= 600 && weatherId < 700: //id : Snow
+      return '<i class="fa-regular fa-snowflake snowflake-emoji"></i>';
+
+    case weatherId >= 700 && weatherId < 800: //id : Atmosphere
+      return '<i class="fa-solid fa-smog smog-emoji"></i>';
+
+    case weatherId === 800: //id : Clear
+      return '<i class="fa-solid fa-sun sun-emoji"></i>';
+
+    case weatherId >= 801 && weatherId < 810: //id : Cloud
+      return '<i class="fa-solid fa-cloud cloud-emoji"></i>';
+
+    default:
+      return '';
+  }
+}
 
 function displayError(message) {
   document.querySelector('.js-main-weather-content').innerHTML = '';
