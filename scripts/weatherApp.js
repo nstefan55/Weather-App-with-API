@@ -177,6 +177,7 @@ function displayWeatherInfo(data) {
   
     `;
     weatherContent.innerHTML = weatherHtml;
+    sdasdasdas;
 
     const errorContainer = document.querySelector('.errorContainer');
 
