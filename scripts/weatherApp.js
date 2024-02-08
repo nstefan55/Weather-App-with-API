@@ -11,6 +11,8 @@ renderWeatherInputFades();
 
 gsapHeadingAnimation();
 
+setInterval(periodicallyChangeGifs, 5000);
+
 submitCityAndHideHeading();
 
 const weatherForm = document.getElementById('weather-form');
@@ -187,6 +189,27 @@ function displayWeatherInfo(data) {
   }
 }
 
+function getWeatherBackground(weatherId) {}
+
+function periodicallyChangeGifs() {
+  const gifURLs = [
+    '../../gifs/giphy.gif',
+    '../../gifs/giphy-2.gif',
+    '../../gifs/giphy-3.gif',
+    '../../gifs/giphy-4.gif',
+    '../../gifs/giphy-5.gif',
+    '../../gifs/giphy-6.gif',
+    '../../gifs/giphy-7.gif',
+    '../../gifs/giphy-8.gif',
+  ];
+
+  const imgElement = document.querySelector('.gif');
+
+  const randomIndex = Math.floor(Math.random() * gifURLs.length);
+
+  imgElement.src = gifURLs[randomIndex];
+}
+
 function getWeatherEmoji(weatherId) {
   switch (true) {
     case weatherId >= 200 && weatherId < 300: //id : thunderstorm
@@ -214,9 +237,6 @@ function getWeatherEmoji(weatherId) {
       return '';
   }
 }
-
-function getWeatherBackground(weatherId) {}
-
 function displayError(message) {
   document.querySelector('.js-main-weather-content').innerHTML = '';
 

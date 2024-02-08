@@ -32,6 +32,14 @@ main {
 
 /* Weather Submit Form */
 
+.gif-container {
+  margin: 3rem 0;
+}
+
+.gif-container .gif {
+  border-radius: 1rem;
+}
+
 .weather-city-input {
   padding: 0.75rem 1.2rem;
   border: none;
@@ -134,12 +142,10 @@ main {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-
-  margin-bottom: 12rem;
 }
 
 #weatherAppTitle h1.heading {
-  font-size: clamp(2rem, 4vw, 6rem);
+  font-size: clamp(2rem, 5vw, 8rem);
   font-weight: 450;
   text-transform: capitalize;
   position: relative;
@@ -436,7 +442,20 @@ main {
     display: flex;
   }
 
+  .weather-city-input::placeholder {
+    font-size: 1rem;
+    text-align: center;
+  }
+
   #weatherAppTitle h1.heading {
-    font-size: clamp(1rem, 2vw, 2rem);
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    text-align: center;
+    margin: 4rem 0 2rem 0;
+  }
+
+  #weatherAppTitle p.desc {
+    text-decoration: none;
+    text-align: center;
+    font-size: clamp(0.6rem, 4vw, 1rem);
   }
 }
