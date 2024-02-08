@@ -105,7 +105,9 @@ function displayWeatherInfo(data) {
         </div>
         <div class="second-grid-container">
           <p class="wind-km-display">${formatWindSpeed(speed)} m/s</p>
-          <p class="wind-deg-display">${formatWindDeg(deg)} deg</p>
+          <p class="wind-deg-display"><i class="fa-solid fa-compass compass-icon"></i> ${formatWindDegToDirections(
+            deg
+          )}</p>
         </div>
       </div>
 
@@ -209,6 +211,8 @@ function getWeatherEmoji(weatherId) {
   }
 }
 
+function getWeatherBackground(weatherId) {}
+
 function displayError(message) {
   document.querySelector('.js-main-weather-content').innerHTML = '';
 
@@ -259,9 +263,25 @@ function formatWindSpeed(speed) {
     : formattedSpeed;
 }
 
-function formatWindDeg(deg) {
-  const formattedDeg = deg.toFixed(1);
-  return formattedDeg.endsWith('.0') ? formattedDeg.slice(0, -2) : formattedDeg;
+function formatWindDegToDirections(deg) {
+  let directions = [
+    'North',
+    'North East',
+    'East',
+    'South East',
+    'South',
+    'South West',
+    'West',
+    'North West',
+  ];
+
+  deg += 22.5;
+
+  if (deg < 0) deg = 360 - (Math.abs(deg) % 360);
+  else deg = deg % 360;
+
+  let which = parseInt(deg / 45);
+  return directions[which];
 }
 
 function convertIntoKm(visibility) {
