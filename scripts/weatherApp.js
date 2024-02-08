@@ -101,7 +101,7 @@ function displayWeatherInfo(data) {
     <div class="flex-container">
       <div class="weather-card card-60-percent">
         <div class="wind-container">
-          <h1 class="windDisplay">Wind</h1>
+          <h1 class="windDisplay">Wind <i class="fa-solid fa-wind m-l-1"></i></h1>
         </div>
         <div class="second-grid-container">
           <p class="wind-km-display">${formatWindSpeed(speed)} m/s</p>
@@ -113,7 +113,7 @@ function displayWeatherInfo(data) {
 
       <div class="weather-card card-40-percent">
         <div class="feelsLike-container">
-          <h1 class="windDisplay">Feels Like</h1>
+          <h1 class="windDisplay">Feels Like <i class="fa-solid fa-temperature-high temp-high-emoji m-l-1"></i></h1>
         </div>
         <div class="flex-column">
           <p class="feels-like-display">${formatFeelsTemp(feels_like)} °C</p>
@@ -155,7 +155,9 @@ function displayWeatherInfo(data) {
           <h1 class="sunsetDisplay">Sunset</h1>
         </div>
         <div class="flex-column">
-          <p class="sunsetTime">${formatSunset(sunset)}</p>
+          <p class="sunsetTime">${formatSunset(
+            sunset
+          )} <i class="fa-solid fa-moon"></i></p>
         </div>
       </div>
 
@@ -164,7 +166,9 @@ function displayWeatherInfo(data) {
           <h1 class="sunriseDisplay">Sunrise</h1>
         </div>
         <div class="flex-column">
-          <p class="sunsetTime">${formatSunrise(sunrise)}</p>
+          <p class="sunsetTime">${formatSunrise(
+            sunrise
+          )} <i class="fa-regular fa-sun"></i></p>
         </div>
       </div>
 
@@ -266,13 +270,13 @@ function formatWindSpeed(speed) {
 function formatWindDegToDirections(deg) {
   let directions = [
     'North',
-    'North East',
+    'North-East',
     'East',
-    'South East',
+    'South-East',
     'South',
-    'South West',
+    'South-West',
     'West',
-    'North West',
+    'North-West',
   ];
 
   deg += 22.5;
