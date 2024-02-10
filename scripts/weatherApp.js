@@ -76,6 +76,10 @@ function displayWeatherInfo(data) {
 
     city = checkCityZagreb(cityInput, city);
 
+    const backgroundSource = document.getElementById('background');
+
+    backgroundSource.src = getWeatherBackground(id);
+
     const weatherHtml = `
     <div class="weather-card container-grid">
       <div class="city-container">
@@ -188,8 +192,33 @@ function displayWeatherInfo(data) {
     errorContainer.classList.remove('messageDisplay');
   }
 }
+function getWeatherBackground(weatherId) {
+  switch (true) {
+    case weatherId >= 200 && weatherId < 300: //id : thunderstorm
+      return './video-backgrounds/thunderstorm.mp4';
 
-function getWeatherBackground(weatherId) {}
+    case weatherId >= 400 && weatherId < 400: //id : Rain/Drizzle Rain
+      return './video-backgrounds/drizzle-rain.mp4';
+
+    case weatherId >= 500 && weatherId < 600: //id : Heavy Rain
+      return './video-backgrounds/heavy-rain.mp4';
+
+    case weatherId >= 600 && weatherId < 700: //id : Snow
+      return './video-backgrounds/snow.mp4';
+
+    case weatherId >= 700 && weatherId < 800: //id : Atmosphere
+      return './video-backgrounds/atmosphere.mp4';
+
+    case weatherId === 800: //id : Clear
+      return './video-backgrounds/clear-sky.mp4';
+
+    case weatherId >= 801 && weatherId < 810: //id : Cloud
+      return './video-backgrounds/dark-cloud.mp4';
+
+    default:
+      return './video-backgrounds/clear-sky.mp4';
+  }
+}
 
 function periodicallyChangeGifs() {
   const gifURLs = [

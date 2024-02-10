@@ -24,6 +24,20 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  position: relative;
+}
+
+/* Video Background */
+
+.video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  object-fit: cover;
 }
 
 main {
@@ -38,6 +52,8 @@ main {
 
 .gif-container .gif {
   border-radius: 1rem;
+  max-width: 100%;
+  width: 300px;
 }
 
 .weather-city-input {
@@ -171,6 +187,9 @@ main {
   background: linear-gradient(180deg, #000, var(--primary-color));
   padding: 4rem;
   border-radius: 20px;
+
+  -webkit-box-shadow: 0 0 10px var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
 }
 
 .weather-card-longer {
@@ -630,7 +649,7 @@ main {
   }
 
   #weatherAppTitle h1.heading {
-    font-size: clamp(3rem, 4vw, 4rem);
+    font-size: clamp(2rem, 4vw, 2rem);
     text-align: center;
     margin: 4rem 0 2rem 0;
   }
@@ -640,7 +659,6 @@ main {
     text-align: center;
     font-size: clamp(0.6rem, 4vw, 1rem);
   }
-
   .weather-submit-btn {
     margin-bottom: 1rem;
   }
