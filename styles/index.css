@@ -436,7 +436,324 @@ main {
   display: none;
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (620px <= width <= 1040px) {
+  .container-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .weather-card.container-grid {
+    padding: 2rem 8rem;
+  }
+
+  .weather-card.container-grid > * {
+    margin-bottom: 1rem;
+  }
+
+  .weather-card.weather-card-longer {
+    margin-bottom: 1rem;
+  }
+
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .flex-container .weather-card.card-60-percent {
+    min-width: unset;
+    margin-right: unset;
+    width: 100%;
+  }
+  .flex-container .weather-card.card-40-percent {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .flex-container .weather-card.card-40-percent.m-l-4.m-r-2 {
+    margin: unset;
+  }
+  .flex-container .weather-card.weather-card-longer.m-l-4.m-r-2 {
+    margin: unset;
+  }
+
+  .flex-container .weather-card-longer {
+    padding: 5rem 0;
+    width: 100%;
+  }
+}
+
+@media screen and (400px <= width <= 619px) {
+  .weather-city-input {
+    max-width: 200px;
+    display: flex;
+  }
+
+  .weather-city-input::placeholder {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  #weatherAppTitle h1.heading {
+    font-size: clamp(3rem, 4vw, 4rem);
+    text-align: center;
+    margin: 4rem 0 2rem 0;
+  }
+
+  #weatherAppTitle p.desc {
+    text-decoration: none;
+    text-align: center;
+    font-size: clamp(0.6rem, 4vw, 1rem);
+  }
+
+  .weather-submit-btn {
+    margin-bottom: 1rem;
+  }
+
+  .container-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .weather-card {
+    padding: 1rem 2rem;
+  }
+
+  .weather-card.container-grid > * {
+    margin-bottom: 1rem;
+  }
+
+  .weather-card.container-grid .cityDisplay,
+  .weatherIcon {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .weather-card.container-grid .temp-container {
+    padding: 0.25rem 1rem;
+  }
+
+  .weather-card.container-grid .tempDisplay {
+    font-size: 1.8rem;
+  }
+
+  .weather-card.container-grid .humidity-container {
+    padding: 0.5rem 1.5rem;
+  }
+
+  .weather-card.container-grid .high-low-temp-container {
+    padding: 0.5rem 1.5rem;
+  }
+
+  .weather-card.container-grid .humidityDisplay,
+  .humidityPercentDisplay {
+    font-size: 1.5rem;
+  }
+
+  .weather-card.container-grid .descDisplay {
+    font-size: clamp(1rem, 6vw, 2rem);
+  }
+
+  .flex-container .wind-container {
+    padding: 0.5rem 1rem;
+  }
+
+  .flex-container .windDisplay,
+  .pressureDisplay,
+  .visibilityDisplay,
+  .sunsetDisplay,
+  .sunriseDisplay,
+  .feels-like-display {
+    font-size: clamp(1rem, 6vw, 2rem);
+  }
+
+  .flex-container .second-grid-container {
+    padding: 0.5rem 1rem;
+  }
+
+  .flex-container .wind-km-display,
+  .wind-deg-display,
+  .pressure-parameter,
+  .distanceParameterDisplay,
+  .sunsetTime {
+    font-size: 1.6rem;
+  }
+
+  .weather-card.container-grid .feelsLike-container {
+    padding: 0.5rem 1rem;
+  }
+
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .weather-card.card-60-percent {
+    min-width: unset;
+    margin-right: unset;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .weather-card.card-40-percent {
+    min-width: unset;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .weather-card.weather-card-longer.card-40-percent {
+    padding: 2rem;
+  }
+
+  .flex-container .weather-card.card-40-percent.m-l-4.m-r-2 {
+    margin: unset;
+  }
+  .flex-container .weather-card.weather-card-longer.m-l-4.m-r-2 {
+    margin: unset;
+  }
+
+  .flex-container .weather-card-longer {
+    padding: 5rem 0;
+    width: 100%;
+  }
+}
+
+@media screen and (280px <= width <= 399px) {
+  .weather-city-input {
+    max-width: 200px;
+    display: flex;
+  }
+
+  .weather-city-input::placeholder {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  #weatherAppTitle h1.heading {
+    font-size: clamp(3rem, 4vw, 4rem);
+    text-align: center;
+    margin: 4rem 0 2rem 0;
+  }
+
+  #weatherAppTitle p.desc {
+    text-decoration: none;
+    text-align: center;
+    font-size: clamp(0.6rem, 4vw, 1rem);
+  }
+
+  .weather-submit-btn {
+    margin-bottom: 1rem;
+  }
+
+  .container-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .weather-card.container-grid {
+    padding: 1rem 2rem;
+  }
+
+  .weather-card.container-grid > * {
+    margin-bottom: 1rem;
+  }
+
+  .weather-card.container-grid .cityDisplay,
+  .weatherIcon {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .weather-card.container-grid .temp-container {
+    padding: 0.25rem 1rem;
+  }
+
+  .weather-card.container-grid .tempDisplay {
+    font-size: 1.8rem;
+  }
+
+  .weather-card.container-grid .humidity-container {
+    padding: 0.5rem 1.5rem;
+  }
+
+  .weather-card.container-grid .high-low-temp-container {
+    padding: 0.5rem 1.5rem;
+  }
+
+  .weather-card.container-grid .humidityDisplay,
+  .humidityPercentDisplay {
+    font-size: 1.5rem;
+  }
+
+  .weather-card.container-grid .descDisplay {
+    font-size: clamp(1rem, 6vw, 2rem);
+  }
+
+  .flex-container .wind-container {
+    padding: 0.5rem 1rem;
+  }
+
+  .flex-container .windDisplay,
+  .pressureDisplay,
+  .visibilityDisplay,
+  .sunsetDisplay,
+  .sunriseDisplay,
+  .feels-like-display {
+    font-size: clamp(1rem, 6vw, 2rem);
+  }
+
+  .flex-container .second-grid-container {
+    padding: 0.5rem 1rem;
+  }
+
+  .flex-container .wind-km-display,
+  .wind-deg-display,
+  .pressure-parameter,
+  .distanceParameterDisplay,
+  .sunsetTime {
+    font-size: 1.6rem;
+  }
+
+  .weather-card.container-grid .feelsLike-container {
+    padding: 0.5rem 1rem;
+  }
+
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .weather-card.card-60-percent {
+    min-width: unset;
+    margin-right: unset;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .weather-card.card-40-percent {
+    min-width: unset;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .weather-card.weather-card-longer.card-40-percent {
+    padding: 2rem;
+  }
+
+  .flex-container .weather-card.card-40-percent.m-l-4.m-r-2 {
+    margin: unset;
+  }
+  .flex-container .weather-card.weather-card-longer.m-l-4.m-r-2 {
+    margin: unset;
+  }
+
+  .flex-container .weather-card-longer {
+    padding: 5rem 0;
+    width: 100%;
+  }
+}
+
+/* @media screen and (max-width: 580px) {
   .weather-city-input {
     max-width: 200px;
     display: flex;
@@ -458,4 +775,4 @@ main {
     text-align: center;
     font-size: clamp(0.6rem, 4vw, 1rem);
   }
-}
+} */
