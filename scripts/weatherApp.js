@@ -19,6 +19,8 @@ const weatherForm = document.getElementById('weather-form');
 
 const cityInput = document.querySelector('.js-weather-city-input');
 
+const backgroundSource = document.getElementById('background');
+
 const apiKey = '889ae0d6257b33c9fc650c6c39d0c81e';
 
 let timeoutId;
@@ -38,10 +40,12 @@ weatherForm.addEventListener('submit', async (event) => {
     } catch (error) {
       console.log(error);
       displayError(error);
+      backgroundSource.src = '';
     }
   } else {
     displayError('Please Enter a City!');
     document.querySelector('.errorContainer').classList.remove('displayNone');
+    backgroundSource.src = '';
   }
 });
 
@@ -75,8 +79,6 @@ function displayWeatherInfo(data) {
     } = data;
 
     city = checkCityZagreb(cityInput, city);
-
-    const backgroundSource = document.getElementById('background');
 
     backgroundSource.src = getWeatherBackground(id);
 
@@ -278,7 +280,7 @@ function displayError(message) {
   timeoutId = setTimeout(() => {
     document.querySelector('.errorContainer').classList.add('displayNone');
     showHeadingTitle();
-  }, 7000);
+  }, 8000);
 }
 
 function formatToCelcius(temp) {
