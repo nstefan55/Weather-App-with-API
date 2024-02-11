@@ -236,13 +236,13 @@ function getWeatherBackground(weatherId) {
 
 function periodicallyChangeGifs() {
   const gifURLs = [
-    '../../gifs/giphy-2.gif',
-    '../../gifs/giphy-4.gif',
     '../../gifs/giphy.gif',
-    '../../gifs/giphy-5.gif',
+    '../../gifs/giphy-2.gif',
     '../../gifs/giphy-3.gif',
-    '../../gifs/giphy-7.gif',
+    '../../gifs/giphy-4.gif',
+    '../../gifs/giphy-5.gif',
     '../../gifs/giphy-6.gif',
+    '../../gifs/giphy-7.gif',
     '../../gifs/giphy-8.gif',
   ];
 
