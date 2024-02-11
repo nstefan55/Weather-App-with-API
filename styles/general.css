@@ -137,3 +137,9 @@ p {
 .m-l-4 {
   margin-left: 4rem;
 }
+
+/* Index Positioning */
+
+.z-10 {
+  z-index: 10;
+}

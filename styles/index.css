@@ -32,12 +32,17 @@ body {
 
 .video-background {
   position: fixed;
-  right: 0;
+  top: 0;
+  left: 0;
   bottom: 0;
+  right: 0;
   min-width: 100%;
   min-height: 100%;
-  z-index: -1;
   object-fit: cover;
+  z-index: -1;
+
+  pointer-events: none;
+  opacity: 0.6;
 }
 
 main {
