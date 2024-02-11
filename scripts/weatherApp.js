@@ -149,6 +149,8 @@ function displayWeatherInfo(data) {
         </div>
       </div>
 
+      <br />
+
       <div class="weather-card card-40-percent">
         <div class="feelsLike-container">
           <h1 class="visibilityDisplay">Visibility</h1>
@@ -176,6 +178,8 @@ function displayWeatherInfo(data) {
           )} <i class="fa-solid fa-moon"></i></p>
         </div>
       </div>
+
+      <br />
 
       <div class="weather-card weather-card-longer card-40-percent">
         <div class="sunrise-container">
