@@ -25,6 +25,14 @@ const apiKey = '889ae0d6257b33c9fc650c6c39d0c81e';
 
 let timeoutId;
 
+const hiddenHeading = document.getElementById('hidden-heading');
+
+//if user has disabled animations - show full heading
+
+if (window.matchMedia('(prefers-reduced-motion: reduce').matches) {
+  hiddenHeading.classList.remove('hidden');
+}
+
 weatherForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 

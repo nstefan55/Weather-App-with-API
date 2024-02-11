@@ -158,6 +158,10 @@ main {
   font-size: 600;
 }
 
+span.hidden {
+  display: none;
+}
+
 #weatherAppTitle {
   display: flex;
   flex-direction: column;
@@ -174,7 +178,8 @@ main {
 }
 
 #weatherAppTitle h1.heading span.text-4,
-#weatherAppTitle h1.heading span.text-5 {
+#weatherAppTitle h1.heading span.text-5,
+#weatherAppTitle h1.heading span.text-full {
   color: var(--yellow-color);
   font-weight: bold;
   -webkit-text-shadow: 0 0 10px #fff;
@@ -776,26 +781,19 @@ main {
   }
 }
 
-/* @media screen and (max-width: 580px) {
-  .weather-city-input {
-    max-width: 200px;
-    display: flex;
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important ;
+    transition-duration: 0s !important;
   }
 
-  .weather-city-input::placeholder {
-    font-size: 1rem;
-    text-align: center;
+  .heading-text,
+  .text-1,
+  .text-2,
+  .text-3,
+  .text-4,
+  .text5,
+  .cursor {
+    display: none !important;
   }
-
-  #weatherAppTitle h1.heading {
-    font-size: clamp(1.5rem, 2vw, 2rem);
-    text-align: center;
-    margin: 4rem 0 2rem 0;
-  }
-
-  #weatherAppTitle p.desc {
-    text-decoration: none;
-    text-align: center;
-    font-size: clamp(0.6rem, 4vw, 1rem);
-  }
-} */
+}
