@@ -142,7 +142,7 @@ function displayWeatherInfo(data) {
         <div class="feelsLike-container">
           <h1 class="windDisplay">Feels Like <i class="fa-solid fa-temperature-high temp-high-emoji m-l-1"></i></h1>
         </div>
-        <div class="flex-column">
+        <div class="flex-column feels-container">
           <p class="feels-like-display">${formatFeelsTemp(feels_like)} °C</p>
         </div>
       </div>

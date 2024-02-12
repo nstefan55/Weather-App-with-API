@@ -219,6 +219,12 @@ span.hidden {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+}
+
+.city-container:hover .weatherIcon {
+  text-shadow: 0 0 10px #fff;
 }
 
 .cityDisplay {
