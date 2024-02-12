@@ -5,6 +5,19 @@ import {
   showHeadingTitle,
 } from './Weather Input/input.js';
 
+import {
+  formatFeelsTemp,
+  formatToCelcius,
+  formatMaxToCelcius,
+  formatMinToCelcius,
+  formatWindDegToDirections,
+  formatWindSpeed,
+  convertIntoKm,
+  formatSunrise,
+  formatSunset,
+  checkCityZagreb,
+} from './Formatting/format.js';
+
 import { gsapHeadingAnimation } from '../scripts/Animations/animations.js';
 
 renderWeatherInputFades();
@@ -25,10 +38,8 @@ const apiKey = '889ae0d6257b33c9fc650c6c39d0c81e';
 
 let timeoutId;
 
-const hiddenHeading = document.getElementById('hidden-heading');
-
 //if user has disabled animations - show full heading
-
+const hiddenHeading = document.getElementById('hidden-heading');
 if (window.matchMedia('(prefers-reduced-motion: reduce').matches) {
   hiddenHeading.classList.remove('hidden');
 }
@@ -293,105 +304,4 @@ function displayError(message) {
     document.querySelector('.errorContainer').classList.add('displayNone');
     showHeadingTitle();
   }, 8000);
-}
-
-function formatToCelcius(temp) {
-  const formattedTemp = Math.round(temp - 273.15).toFixed(1);
-  return formattedTemp.endsWith('.0')
-    ? formattedTemp.slice(0, -2)
-    : formattedTemp;
-}
-
-function formatFeelsTemp(feels_like) {
-  const formattedFeelsTemp = Math.round(feels_like - 273.15).toFixed(1);
-  return formattedFeelsTemp.endsWith('.0')
-    ? formattedFeelsTemp.slice(0, -2)
-    : formattedFeelsTemp;
-}
-
-function formatMinToCelcius(temp_min) {
-  const formattedMinToCelcius = Math.round(temp_min - 273.15).toFixed(1);
-  return formattedMinToCelcius.endsWith('.0')
-    ? formattedMinToCelcius.slice(0, -2)
-    : formattedMinToCelcius;
-}
-
-function formatMaxToCelcius(temp_max) {
-  const formattedMaxToCelcius = Math.round(temp_max - 273.15).toFixed(1);
-  return formattedMaxToCelcius.endsWith('.0')
-    ? formattedMaxToCelcius.slice(0, -2)
-    : formattedMaxToCelcius;
-}
-
-function formatWindSpeed(speed) {
-  const formattedSpeed = speed.toFixed(1);
-  return formattedSpeed.endsWith('.0')
-    ? formattedSpeed.slice(0, -2)
-    : formattedSpeed;
-}
-
-function formatWindDegToDirections(deg) {
-  let directions = [
-    'North',
-    'North-East',
-    'East',
-    'South-East',
-    'South',
-    'South-West',
-    'West',
-    'North-West',
-  ];
-
-  deg += 22.5;
-
-  if (deg < 0) deg = 360 - (Math.abs(deg) % 360);
-  else deg = deg % 360;
-
-  let which = parseInt(deg / 45);
-  return directions[which];
-}
-
-function convertIntoKm(visibility) {
-  return visibility / 1000;
-}
-
-function formatSunset(sunset) {
-  let unix_sunset = sunset;
-
-  let sunsetDate = new Date(unix_sunset * 1000);
-
-  let sunsetHours = sunsetDate.getHours();
-
-  let sunsetMinutes = '0' + sunsetDate.getMinutes();
-
-  let formattedSunset = sunsetHours + ':' + sunsetMinutes.substr(-2);
-
-  return formattedSunset;
-}
-
-function formatSunrise(sunrise) {
-  let unix_sunrise = sunrise;
-
-  let sunriseDate = new Date(unix_sunrise * 1000);
-
-  let sunriseHours = sunriseDate.getHours();
-
-  let sunriseMinutes = '0' + sunriseDate.getMinutes();
-
-  let formattedSunrise = sunriseHours + ':' + sunriseMinutes.substr(-2);
-
-  return formattedSunrise;
-}
-
-function checkCityZagreb(cityInput, city) {
-  if (
-    cityInput.value === 'zagreb' ||
-    cityInput.value === 'Zagreb' ||
-    cityInput.value === 'Grad Zagreb' ||
-    cityInput.value === 'grad zagreb'
-  ) {
-    return 'Zagreb';
-  }
-
-  return city;
 }
