@@ -1,5 +1,3 @@
 
-Weather App with https://openweathermap.org/
+Weather App with https://openweathermap.org/ Api
 
-
-** Work in progress
