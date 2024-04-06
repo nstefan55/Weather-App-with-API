@@ -1,0 +1,22 @@
+{
+  "name": "weather-app-with-api",
+  "version": "1.0.0",
+  "description": "Weather App with integrated data from an API",
+  "main": "weatherApp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "weather",
+    "weather-app",
+    "weather-app",
+    "api"
+  ],
+  "author": "Nikola Štefančić",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "webpack": "^5.91.0"
+  }
+}
