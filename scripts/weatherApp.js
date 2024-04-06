@@ -34,7 +34,7 @@ const cityInput = document.querySelector('.js-weather-city-input');
 
 const backgroundSource = document.getElementById('background');
 
-let apiKey = '889ae0d6257b33c9fc650c6c39d0c81e';
+const apiKey = '889ae0d6257b33c9fc650c6c39d0c81e';
 
 let timeoutId;
 
