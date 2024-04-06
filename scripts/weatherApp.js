@@ -20,6 +20,8 @@ import {
 
 import { gsapHeadingAnimation } from '../scripts/Animations/animations.js';
 
+import WEATHER_API_KEY from './apiKey.js';
+
 renderWeatherInputFades();
 
 gsapHeadingAnimation();
@@ -34,7 +36,7 @@ const cityInput = document.querySelector('.js-weather-city-input');
 
 const backgroundSource = document.getElementById('background');
 
-const apiKey = '889ae0d6257b33c9fc650c6c39d0c81e';
+const apiKey = WEATHER_API_KEY;
 
 let timeoutId;
 
