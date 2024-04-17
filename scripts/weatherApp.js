@@ -83,7 +83,7 @@ async function getCurrentWeatherData(city) {
 }
 
 function displayWeatherInfo(data) {
-  //console.log(data);
+  console.log(data);
 
   hideHeadingTitle();
 
