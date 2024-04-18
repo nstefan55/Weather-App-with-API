@@ -55,9 +55,10 @@ weatherForm.addEventListener('submit', async (event) => {
 
   if (city) {
     try {
-      const currentWeatherData = await getCurrentWeatherData(city);
+      const weatherData = await getWeatherData(city);
 
-      displayWeatherInfo(currentWeatherData);
+      displayCurrentWeatherInfo(weatherData);
+      displayForecastWeatherInfo(weatherData);
     } catch (error) {
       console.log(error);
       displayError(error);
@@ -70,19 +71,30 @@ weatherForm.addEventListener('submit', async (event) => {
   }
 });
 
-async function getCurrentWeatherData(city) {
-  const apiCurrentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+async function getWeatherData(city) {
+  const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  const forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
 
-  const responseCurrentWeather = await fetch(apiCurrentWeatherURL);
+  await fetch(currentWeatherUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      displayCurrentWeatherInfo(data);
+    })
+    .catch((error) => {
+      console.log('Error fetching current weather data:', error);
+    });
 
-  if (!responseCurrentWeather.ok) {
-    throw new Error('Could not retrieve current weather data.');
-  }
-
-  return await responseCurrentWeather.json();
+  await fetch(forecastWeatherUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      displayForecastWeatherInfo(data);
+    })
+    .catch((error) => {
+      console.log('Error fetching forecast weather data:', error);
+    });
 }
 
-function displayWeatherInfo(data) {
+function displayCurrentWeatherInfo(data) {
   console.log(data);
 
   hideHeadingTitle();
@@ -104,113 +116,146 @@ function displayWeatherInfo(data) {
     backgroundSource.src = getWeatherBackground(id);
 
     const weatherHtml = `
-    <div class="weather-card container-grid">
-      <div class="city-container">
-        <h1 class="cityDisplay">${city}</h1>
-        <p class="weatherIcon">${getWeatherEmoji(id)}</p>
-      </div>
 
-      <div class="temp-container">
-        <p class="tempDisplay">${formatToCelcius(temp)} °C</p>
-      </div>
-      <div class="humidity-container">
-        <p class="humidityDisplay">Humidity</p>
-        <p class="humidityPercentDisplay">${humidity}%</p>
-      </div>
-      <p class="descDisplay">${description}</p>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="card weather-card-bg p-4 h-100">
+                <div class="card-body text-light">
+                  <div class="d-flex align-items-center justify-content-center rounded mx-auto">
+                    <h1 class="cityDisplay p-3 mb-3">${city}</h1>
+                    <p class="weatherIcon p-3">${getWeatherEmoji(id)}</p>
+                  </div>
+                  <p class="tempDisplay details-bg">${formatToCelcius(
+                    temp
+                  )} °C</p>
+                  <div class="d-flex align-items-center text-center justify-content-around details-bg mt-5">
+                    <p class="humidityDisplay m-0 h3">Humidity</p>
+                    <p class="humidityPercentDisplay m-0">${humidity}%</p>
+                  </div>
+                  <p class="descDisplay my-4">${description}</p>
+                  <p class="high-tempDisplay text-center">
+                    High Temp: <span class="ms-4">${formatMaxToCelcius(
+                      temp_max
+                    )} °C</span>
+                  </p>
+                  <p class="low-tempDisplay text-center">Low Temp: <span class="ms-4">${formatMinToCelcius(
+                    temp_min
+                  )} °C</span>
+                </div>
+              </div>
+            </div>
+            <div class="col"> 
+              <div class="card p-4 weather-card-bg">
+                <div class="card-body text-light">
+                  <h1 class="windDisplay">
+                    Wind <i class="fa-solid fa-wind m-l-1"></i>
+                  </h1>
+                  <p class="wind-km-display">${formatWindSpeed(speed)} m/s</p>
+                  <p class="wind-deg-display">
+                    <i class="fa-solid fa-compass compass-icon"></i>
+                    ${formatWindDegToDirections(deg)}
+                  </p>
+                </div>
+              </div>
+              <div class="card mt-5 p-5 weather-card-bg">
+                <div class="card-body text-light">
+                  <h1 class="windDisplay">
+                    Feels Like
+                    <i class="fa-solid fa-temperature-high temp-high-emoji m-l-1"></i>
+                  </h1>
+                  <p class="feels-like-display">${formatFeelsTemp(
+                    feels_like
+                  )} °C</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col">
+              <div class="card p-4 weather-card-bg">
+                <div class="card-body text-light">
+                  <h1 class="pressureDisplay">Pressure</h1>
+                  <p class="pressure-parameter">${pressure} hPa</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card p-4 weather-card-bg">
+                <div class="card-body text-light">
+                  <h1 class="visibilityDisplay">Visibility</h1>
+                  <p class="distanceParameterDisplay">
+                    ${convertIntoKm(visibility)} km
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <div class="card p-4 weather-card-bg">
+                <div class="card-body text-light">
+                  <h1 class="sunsetDisplay">Sunset</h1>
+                  <p class="sunsetTime">
+                    ${formatSunset(sunset)} <i class="fa-solid fa-moon"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card p-4 weather-card-bg">
+                <div class="card-body text-light">
+                  <h1 class="sunriseDisplay">Sunrise</h1>
+                  <p class="sunsetTime">
+                    ${formatSunrise(sunrise)} <i class="fa-regular fa-sun"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+     </div>
 
-      <div class="high-low-temp-container">
-        <p class="high-tempDisplay">H: ${formatMaxToCelcius(temp_max)} °C</p>
-        <p class="low-tempDisplay">L: ${formatMinToCelcius(temp_min)} °C</p>
-      </div>
-    </div>
 
-    <br /><br />
-
-    <div class="flex-container">
-      <div class="weather-card card-60-percent">
-        <div class="wind-container">
-          <h1 class="windDisplay">Wind <i class="fa-solid fa-wind m-l-1"></i></h1>
-        </div>
-        <div class="second-grid-container">
-          <p class="wind-km-display">${formatWindSpeed(speed)} m/s</p>
-          <p class="wind-deg-display"><i class="fa-solid fa-compass compass-icon"></i> ${formatWindDegToDirections(
-            deg
-          )}</p>
-        </div>
-      </div>
-
-      <div class="weather-card card-40-percent">
-        <div class="feelsLike-container">
-          <h1 class="windDisplay">Feels Like <i class="fa-solid fa-temperature-high temp-high-emoji m-l-1"></i></h1>
-        </div>
-        <div class="flex-column feels-container">
-          <p class="feels-like-display">${formatFeelsTemp(feels_like)} °C</p>
-        </div>
-      </div>
-    </div>
-
-    <br /><br />
-
-    <div class="flex-container">
-      <div class="weather-card card-40-percent m-l-4 m-r-2">
-        <div class="pressure-container">
-          <h1 class="pressureDisplay">Pressure</h1>
-        </div>
-        <div class="flex-column">
-          <p class="pressure-parameter">${pressure} hPa</p>
-        </div>
-      </div>
-
-      <br />
-
-      <div class="weather-card card-40-percent">
-        <div class="feelsLike-container">
-          <h1 class="visibilityDisplay">Visibility</h1>
-        </div>
-        <div class="flex-column">
-          <p class="distanceParameterDisplay">${convertIntoKm(
-            visibility
-          )} km</p>
-        </div>
-      </div>
-    </div>
-
-    <br /><br />
-
-    <div class="flex-container">
-      <div
-        class="weather-card weather-card-longer card-40-percent m-l-4 m-r-2"
-      >
-        <div class="sunset-container">
-          <h1 class="sunsetDisplay">Sunset</h1>
-        </div>
-        <div class="flex-column">
-          <p class="sunsetTime">${formatSunset(
-            sunset
-          )} <i class="fa-solid fa-moon"></i></p>
-        </div>
-      </div>
-
-      <br />
-
-      <div class="weather-card weather-card-longer card-40-percent">
-        <div class="sunrise-container">
-          <h1 class="sunriseDisplay">Sunrise</h1>
-        </div>
-        <div class="flex-column">
-          <p class="sunsetTime">${formatSunrise(
-            sunrise
-          )} <i class="fa-regular fa-sun"></i></p>
-        </div>
-      </div>
-
-    </div>
-
-    <br /><br />
 
     `;
     weatherContent.innerHTML = weatherHtml;
+
+    const errorContainer = document.querySelector('.errorContainer');
+
+    errorContainer.innerHTML = '';
+
+    errorContainer.classList.remove('messageDisplay');
+  }
+}
+function displayForecastWeatherInfo(data) {
+  hideHeadingTitle();
+
+  const forecastWeatherContent = document.querySelector(
+    '.js-main-forecast-content'
+  );
+
+  for (let index in data) {
+    let {
+      list: [
+        {
+          main: {
+            temp: forecast_temp,
+            feels_like: forecast_feels_temp,
+            temp_min: forecast_temp_min,
+            temp_max: forecast_temp_max,
+            pressure: forecast_pressure,
+          },
+        },
+      ],
+    } = data;
+
+    city = checkCityZagreb(cityInput, city);
+
+    backgroundSource.src = getWeatherBackground(id);
+
+    const forecastHtml = ``;
+
+    forecastWeatherContent.innerHTML = forecastWeatherContent;
 
     const errorContainer = document.querySelector('.errorContainer');
 
