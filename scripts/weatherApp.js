@@ -26,8 +26,6 @@ renderWeatherInputFades();
 
 gsapHeadingAnimation();
 
-setInterval(periodicallyChangeGifs, 5000);
-
 submitCityAndHideHeading();
 
 const weatherForm = document.getElementById('weather-form');
@@ -58,7 +56,6 @@ weatherForm.addEventListener('submit', async (event) => {
       const weatherData = await getWeatherData(city);
 
       displayCurrentWeatherInfo(weatherData);
-      displayForecastWeatherInfo(weatherData);
     } catch (error) {
       console.log(error);
       displayError(error);
@@ -73,7 +70,6 @@ weatherForm.addEventListener('submit', async (event) => {
 
 async function getWeatherData(city) {
   const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-  const forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
 
   await fetch(currentWeatherUrl)
     .then((response) => response.json())
@@ -82,15 +78,6 @@ async function getWeatherData(city) {
     })
     .catch((error) => {
       console.log('Error fetching current weather data:', error);
-    });
-
-  await fetch(forecastWeatherUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      displayForecastWeatherInfo(data);
-    })
-    .catch((error) => {
-      console.log('Error fetching forecast weather data:', error);
     });
 }
 
@@ -227,43 +214,7 @@ function displayCurrentWeatherInfo(data) {
     errorContainer.classList.remove('messageDisplay');
   }
 }
-function displayForecastWeatherInfo(data) {
-  hideHeadingTitle();
 
-  const forecastWeatherContent = document.querySelector(
-    '.js-main-forecast-content'
-  );
-
-  for (let index in data) {
-    let {
-      list: [
-        {
-          main: {
-            temp: forecast_temp,
-            feels_like: forecast_feels_temp,
-            temp_min: forecast_temp_min,
-            temp_max: forecast_temp_max,
-            pressure: forecast_pressure,
-          },
-        },
-      ],
-    } = data;
-
-    city = checkCityZagreb(cityInput, city);
-
-    backgroundSource.src = getWeatherBackground(id);
-
-    const forecastHtml = ``;
-
-    forecastWeatherContent.innerHTML = forecastWeatherContent;
-
-    const errorContainer = document.querySelector('.errorContainer');
-
-    errorContainer.innerHTML = '';
-
-    errorContainer.classList.remove('messageDisplay');
-  }
-}
 function getWeatherBackground(weatherId) {
   switch (true) {
     case weatherId >= 200 && weatherId < 300: //id : thunderstorm
@@ -290,25 +241,6 @@ function getWeatherBackground(weatherId) {
     default:
       return './video-backgrounds/clear-sky.mp4';
   }
-}
-
-function periodicallyChangeGifs() {
-  const gifURLs = [
-    '../../gifs/giphy.gif',
-    '../../gifs/giphy-2.gif',
-    '../../gifs/giphy-3.gif',
-    '../../gifs/giphy-4.gif',
-    '../../gifs/giphy-5.gif',
-    '../../gifs/giphy-6.gif',
-    '../../gifs/giphy-7.gif',
-    '../../gifs/giphy-8.gif',
-  ];
-
-  const imgElement = document.querySelector('.gif');
-
-  const randomIndex = Math.floor(Math.random() * gifURLs.length);
-
-  imgElement.src = gifURLs[randomIndex];
 }
 
 function getWeatherEmoji(weatherId) {
