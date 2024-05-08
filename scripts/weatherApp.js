@@ -117,7 +117,7 @@ function displayCurrentWeatherInfo(data) {
                     temp
                   )} °C</p>
                   <div class="d-flex align-items-center text-center justify-content-around details-bg mt-5">
-                    <p class="humidityDisplay m-0 h3">Humidity</p>
+                    <p class="humidityDisplay m-0 h3">Humidity:</p>
                     <p class="humidityPercentDisplay m-0">${humidity}%</p>
                   </div>
                   <p class="descDisplay my-4">${description}</p>
@@ -134,7 +134,7 @@ function displayCurrentWeatherInfo(data) {
             </div>
             <div class="col"> 
               <div class="card p-4 weather-card-bg">
-                <div class="card-body text-light">
+                <div class="card-body text-light text-center">
                   <h1 class="windDisplay">
                     Wind <i class="fa-solid fa-wind m-l-1"></i>
                   </h1>
