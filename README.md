@@ -1,6 +1,6 @@
 # Weather App with Api Integration 
 
-## Fetches Data through frontend and pulls data from open weather map backend database through an API and displays on the screen
+## The frontend fetches data and retrieves information from the backend database of the open weather map through an API, which is then displayed on the screen.
 
 ### Technologies used for this project : HTML5, Bootstrap 5, JavaScript && GSAP
 
