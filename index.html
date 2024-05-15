@@ -20,9 +20,14 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
   </head>
 
-  <body>
+  <body class="body">
     <video autoplay muted loop class="video-background" id="background"></video>
     <form class="weather-form z-10" id="weather-form">
       <input
@@ -42,21 +47,18 @@
           <span class="text-2"></span>
           <span class="text-3"></span>
           <span class="text-4"></span>
-          <span class="text-5"></span>
           <span class="cursor">_</span>
           <span id="hidden-heading" class="hidden heading-text"
-            >Welcome to the Official <span class="text-full">Weather App</span>
+            >Welcome to the <span class="text-full">Weather App</span>
           </span>
         </h1>
-        <p class="desc">Find out Weather for your desired City !</p>
-
-        <div class="gif-container">
-          <img src="./gifs/giphy.gif" alt="weather-gif" class="gif" />
-        </div>
+        <p class="desc">Find out Current Weather Information for any City !</p>
       </div>
 
-      <!-- Error Message if Present -->
-      <div class="errorContainer flex-row"></div>
+      <!-- Error Message Displayed if Present -->
+      <div
+        class="errorContainer d-flex justify-content-center align-items-center"
+      ></div>
 
       <div
         id="main-weather-content"
@@ -64,12 +66,14 @@
       ></div>
     </main>
 
-    <footer class="footer">
+    <footer class="footer py-4 text-shadow-2x fw-bold h5">
       &copy; 2024 All Rights Reserved Nikola Stefancic
       <a href="https://github.com/nstefan55" target="_blank">
         <i class="fa-brands fa-github github-logo"></i>
       </a>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>

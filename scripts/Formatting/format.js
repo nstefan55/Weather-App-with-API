@@ -1,33 +1,37 @@
 export function formatToCelcius(temp) {
-  const formattedTemp = Math.round(temp - 273.15).toFixed(1);
+  const formattedTemp = Math.round(((temp - 32) * 5) / 9).toFixed(1);
   return formattedTemp.endsWith('.0')
     ? formattedTemp.slice(0, -2)
     : formattedTemp;
 }
 
 export function formatFeelsTemp(feels_like) {
-  const formattedFeelsTemp = Math.round(feels_like - 273.15).toFixed(1);
+  const formattedFeelsTemp = Math.round(((feels_like - 32) * 5) / 9).toFixed(1);
   return formattedFeelsTemp.endsWith('.0')
     ? formattedFeelsTemp.slice(0, -2)
     : formattedFeelsTemp;
 }
 
 export function formatMinToCelcius(temp_min) {
-  const formattedMinToCelcius = Math.round(temp_min - 273.15).toFixed(1);
+  const formattedMinToCelcius = Math.round(((temp_min - 32) * 5) / 9).toFixed(
+    1
+  );
   return formattedMinToCelcius.endsWith('.0')
     ? formattedMinToCelcius.slice(0, -2)
     : formattedMinToCelcius;
 }
 
 export function formatMaxToCelcius(temp_max) {
-  const formattedMaxToCelcius = Math.round(temp_max - 273.15).toFixed(1);
+  const formattedMaxToCelcius = Math.round(((temp_max - 32) * 5) / 9).toFixed(
+    1
+  );
   return formattedMaxToCelcius.endsWith('.0')
     ? formattedMaxToCelcius.slice(0, -2)
     : formattedMaxToCelcius;
 }
 
 export function formatWindSpeed(speed) {
-  const formattedSpeed = speed.toFixed(1);
+  const formattedSpeed = (speed * 1.609344).toFixed(1);
   return formattedSpeed.endsWith('.0')
     ? formattedSpeed.slice(0, -2)
     : formattedSpeed;
