@@ -56,9 +56,14 @@ weatherForm.addEventListener('submit', async (event) => {
       const weatherData = await getWeatherData(city);
 
       displayCurrentWeatherInfo(weatherData);
+      if (!city) {
+        displayError(
+          'The input you provided is not a City, Please enter a City!'
+        );
+      }
     } catch (error) {
       console.log(error);
-      displayError(error);
+      displayError('The input you provided is not a City, Enter a valid City!');
       backgroundSource.src = '';
     }
   } else {
@@ -69,15 +74,12 @@ weatherForm.addEventListener('submit', async (event) => {
 });
 
 async function getWeatherData(city) {
-  const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 
   await fetch(currentWeatherUrl)
     .then((response) => response.json())
     .then((data) => {
       displayCurrentWeatherInfo(data);
-    })
-    .catch((error) => {
-      console.log('Error fetching current weather data:', error);
     });
 }
 
@@ -102,109 +104,216 @@ function displayCurrentWeatherInfo(data) {
 
     backgroundSource.src = getWeatherBackground(id);
 
-    const weatherHtml = `
+    //     <div class="container">
+    //       <div class="row">
+    //         <div class="col">
+    //           <div class="card weather-card-bg p-4 h-100">
+    //             <div class="card-body text-light">
+    //               <div class="d-flex align-items-center justify-content-center rounded mx-auto">
+    //                 <h1 class="cityDisplay p-3 mb-3">${city}</h1>
+    //                 <p class="weatherIcon p-3">${getWeatherEmoji(id)}</p>
+    //               </div>
+    //               <p class="tempDisplay details-bg">${formatToCelcius(
+    //                 temp
+    //               )} °C</p>
+    //               <div class="d-flex align-items-center text-center justify-content-around details-bg mt-5">
+    //                 <p class="humidityDisplay m-0 h3">Humidity:</p>
+    //                 <p class="humidityPercentDisplay m-0">${humidity}%</p>
+    //               </div>
+    //               <p class="descDisplay my-4">${description}</p>
+    //               <p class="high-tempDisplay text-center">
+    //                 High Temp: <span class="ms-4">${formatMaxToCelcius(
+    //                   temp_max
+    //                 )} °C</span>
+    //               </p>
+    //               <p class="low-tempDisplay text-center">Low Temp: <span class="ms-4">${formatMinToCelcius(
+    //                 temp_min
+    //               )} °C</span>
+    //             </div>
+    //           </div>
+    //         </div>
+    //         <div class="col">
+    //           <div class="card p-4 weather-card-bg">
+    //             <div class="card-body text-light text-center">
+    //               <h1 class="windDisplay">
+    //                 Wind <i class="fa-solid fa-wind m-l-1"></i>
+    //               </h1>
+    //               <p class="wind-km-display">${formatWindSpeed(speed)} km/h</p>
+    //               <p class="wind-deg-display">
+    //                 <i class="fa-solid fa-compass compass-icon"></i>
+    //                 ${formatWindDegToDirections(deg)}
+    //               </p>
+    //             </div>
+    //           </div>
+    //           <div class="card mt-5 p-5 weather-card-bg">
+    //             <div class="card-body text-light">
+    //               <h1 class="windDisplay">
+    //                 Feels Like
+    //                 <i class="fa-solid fa-temperature-high temp-high-emoji m-l-1"></i>
+    //               </h1>
+    //               <p class="feels-like-display">${formatFeelsTemp(
+    //                 feels_like
+    //               )} °C</p>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //       <div class="row mt-5">
+    //         <div class="col">
+    //           <div class="card p-4 weather-card-bg">
+    //             <div class="card-body text-light">
+    //               <h1 class="pressureDisplay">Pressure</h1>
+    //               <p class="pressure-parameter">${pressure} hPa</p>
+    //             </div>
+    //           </div>
+    //         </div>
+    //         <div class="col">
+    //           <div class="card p-4 weather-card-bg">
+    //             <div class="card-body text-light">
+    //               <h1 class="visibilityDisplay">Visibility</h1>
+    //               <p class="distanceParameterDisplay">
+    //                 ${convertIntoKm(visibility)} km
+    //               </p>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //       <div class="row mt-4">
+    //         <div class="col">
+    //           <div class="card p-4 weather-card-bg">
+    //             <div class="card-body text-light">
+    //               <h1 class="sunsetDisplay">Sunset</h1>
+    //               <p class="sunsetTime">
+    //                 ${formatSunset(sunset)} <i class="fa-solid fa-moon"></i>
+    //               </p>
+    //             </div>
+    //           </div>
+    //         </div>
+    //         <div class="col">
+    //           <div class="card p-4 weather-card-bg">
+    //             <div class="card-body text-light">
+    //               <h1 class="sunriseDisplay">Sunrise</h1>
+    //               <p class="sunsetTime">
+    //                 ${formatSunrise(sunrise)} <i class="fa-regular fa-sun"></i>
+    //               </p>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //  </div>
 
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <div class="card weather-card-bg p-4 h-100">
-                <div class="card-body text-light">
-                  <div class="d-flex align-items-center justify-content-center rounded mx-auto">
-                    <h1 class="cityDisplay p-3 mb-3">${city}</h1>
-                    <p class="weatherIcon p-3">${getWeatherEmoji(id)}</p>
-                  </div>
-                  <p class="tempDisplay details-bg">${formatToCelcius(
-                    temp
-                  )} °C</p>
-                  <div class="d-flex align-items-center text-center justify-content-around details-bg mt-5">
-                    <p class="humidityDisplay m-0 h3">Humidity:</p>
-                    <p class="humidityPercentDisplay m-0">${humidity}%</p>
-                  </div>
-                  <p class="descDisplay my-4">${description}</p>
-                  <p class="high-tempDisplay text-center">
-                    High Temp: <span class="ms-4">${formatMaxToCelcius(
-                      temp_max
-                    )} °C</span>
-                  </p>
-                  <p class="low-tempDisplay text-center">Low Temp: <span class="ms-4">${formatMinToCelcius(
+    // `;
+
+    const weatherHtml = `
+    
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card bg-dark p-5 h-100">
+              <div class="card-body text-light">
+                <div
+                  class="d-flex align-items-center justify-content-center rounded mx-auto"
+                >
+                  <h1 class="display-3 p-3 mb-3 fw-bold text-nowrap">${city}</h1>
+                  <p class="display-4 p-3 fw-bold">${getWeatherEmoji(id)}</p>
+                </div>
+                <p class="display-4 fw-bold  bg-info text-shadow rounded text-center">${formatToCelcius(
+                  temp
+                )} °C</p>
+                <div
+                  class="display-4 p-3 d-flex align-items-center text-shadow-2x justify-content-around bg-info shadow-lg rounded text-center"
+                >
+                  <p class="h3 fw-bold">Humidity:</p>
+                  <p class="h1 fw-bold">${humidity}%</p>
+                </div>
+                <p class="my-4 text-center border border-info px-1 py-4 rounded h3 text-capitalize">${description}</p>
+                <p class="text-center h3 mb-5 mt-5 border-info border-start">
+                  Highest Temp:
+                  <span class="ms-4 fw-bold">${formatMaxToCelcius(
+                    temp_max
+                  )} °C</span>
+                </p>
+                <p class="text-center h3 border-info border-end">
+                  Lowest Temp:
+                  <span class="ms-4 fw-bold">${formatMinToCelcius(
                     temp_min
                   )} °C</span>
-                </div>
-              </div>
-            </div>
-            <div class="col"> 
-              <div class="card p-4 weather-card-bg">
-                <div class="card-body text-light text-center">
-                  <h1 class="windDisplay">
-                    Wind <i class="fa-solid fa-wind m-l-1"></i>
-                  </h1>
-                  <p class="wind-km-display">${formatWindSpeed(speed)} km/h</p>
-                  <p class="wind-deg-display">
-                    <i class="fa-solid fa-compass compass-icon"></i>
-                    ${formatWindDegToDirections(deg)}
-                  </p>
-                </div>
-              </div>
-              <div class="card mt-5 p-5 weather-card-bg">
-                <div class="card-body text-light">
-                  <h1 class="windDisplay">
-                    Feels Like
-                    <i class="fa-solid fa-temperature-high temp-high-emoji m-l-1"></i>
-                  </h1>
-                  <p class="feels-like-display">${formatFeelsTemp(
-                    feels_like
-                  )} °C</p>
-                </div>
+                </p>
               </div>
             </div>
           </div>
-          <div class="row mt-5">
-            <div class="col">
-              <div class="card p-4 weather-card-bg">
-                <div class="card-body text-light">
-                  <h1 class="pressureDisplay">Pressure</h1>
-                  <p class="pressure-parameter">${pressure} hPa</p>
-                </div>
+          <div class="col">
+            <div class="card p-4 bg-dark">
+              <div class="card-body text-light text-center">
+                <h1 class="fw-bold h1 mb-5">Wind <i class="fa-solid fa-wind ms-3"></i></h1>
+                <p class="mb-5 p-3 display-6 fw-bold bg-info text-shadow rounded text-center">${formatWindSpeed(
+                  speed
+                )} km/h</p>
+                <p class="display-6 p-3 fw-bold bg-info text-shadow rounded text-center">
+                  <i class="fa-solid fa-compass compass-icon"></i>
+                  ${formatWindDegToDirections(deg)}
+                </p>
               </div>
             </div>
-            <div class="col">
-              <div class="card p-4 weather-card-bg">
-                <div class="card-body text-light">
-                  <h1 class="visibilityDisplay">Visibility</h1>
-                  <p class="distanceParameterDisplay">
-                    ${convertIntoKm(visibility)} km
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row mt-4">
-            <div class="col">
-              <div class="card p-4 weather-card-bg">
-                <div class="card-body text-light">
-                  <h1 class="sunsetDisplay">Sunset</h1>
-                  <p class="sunsetTime">
-                    ${formatSunset(sunset)} <i class="fa-solid fa-moon"></i>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card p-4 weather-card-bg">
-                <div class="card-body text-light">
-                  <h1 class="sunriseDisplay">Sunrise</h1>
-                  <p class="sunsetTime">
-                    ${formatSunrise(sunrise)} <i class="fa-regular fa-sun"></i>
-                  </p>
-                </div>
+            <div class="card mt-3 p-5 bg-dark">
+              <div class="card-body text-light text-center">
+                <h1 class="fw-bold mb-4">
+                  Feels Like
+                  <i class="fa-solid fa-temperature-high ms-3"></i>
+                </h1>
+                <p class="display-6 p-3 fw-bold bg-info text-shadow rounded text-center">${formatFeelsTemp(
+                  feels_like
+                )} °C</p>
               </div>
             </div>
           </div>
-     </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col">
+            <div class="card p-4 bg-info">
+              <div class="card-body text-light text-center">
+                <h1 class="text-dark fw-bold h1 mb-4 text-shadow-white-2x">Pressure</h1>
+                <p class="display-6 p-3 fw-bold bg-dark text-shadow rounded text-center">${pressure} hPa</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card p-4 bg-info">
+              <div class="card-body text-light text-center">
+                <h1 class="text-dark fw-bold h1 mb-4 text-shadow-white-2x">Visibility</h1>
+                <p class="display-6 p-3 fw-bold bg-dark text-shadow rounded text-center">${convertIntoKm(
+                  visibility
+                )} km</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <div class="card p-4 bg-info">
+              <div class="card-body text-light text-center">
+                <h1 class="text-dark fw-bold h1 mb-4 text-shadow-white-2x">Sunset <i class="fa-solid fa-moon"></i></h1>
+                <p class="display-6 p-3 fw-bold bg-dark text-shadow rounded text-center">${formatSunset(
+                  sunset
+                )}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card p-4 bg-info">
+              <div class="card-body text-light text-center">
+                <h1 class="text-dark fw-bold h1 mb-4 text-shadow-white-2x">Sunrise <i class="fa-regular fa-sun"></i></h1>
+                <p class="display-6 p-3 fw-bold bg-dark text-shadow rounded text-center">${formatSunrise(
+                  sunrise
+                )}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div><br><br><br>
+                
 
-
-
-    `;
+`;
     weatherContent.innerHTML = weatherHtml;
 
     const errorContainer = document.querySelector('.errorContainer');
