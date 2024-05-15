@@ -138,7 +138,7 @@ function displayCurrentWeatherInfo(data) {
                   <h1 class="windDisplay">
                     Wind <i class="fa-solid fa-wind m-l-1"></i>
                   </h1>
-                  <p class="wind-km-display">${formatWindSpeed(speed)} m/s</p>
+                  <p class="wind-km-display">${formatWindSpeed(speed)} km/h</p>
                   <p class="wind-deg-display">
                     <i class="fa-solid fa-compass compass-icon"></i>
                     ${formatWindDegToDirections(deg)}
@@ -217,10 +217,13 @@ function displayCurrentWeatherInfo(data) {
 
 function getWeatherBackground(weatherId) {
   switch (true) {
-    case weatherId >= 200 && weatherId < 300: //id : thunderstorm
+    case weatherId >= 200 && weatherId < 203: //id : thunderstorm Rain
+      return './video-backgrounds/thunderstorm-rain.mp4';
+
+    case weatherId >= 203 && weatherId < 300: //id : thunderstorm
       return './video-backgrounds/thunderstorm.mp4';
 
-    case weatherId >= 400 && weatherId < 400: //id : Rain/Drizzle Rain
+    case weatherId >= 301 && weatherId < 400: //id : Rain/Drizzle Rain
       return './video-backgrounds/drizzle-rain.mp4';
 
     case weatherId >= 500 && weatherId < 600: //id : Heavy Rain
@@ -229,14 +232,35 @@ function getWeatherBackground(weatherId) {
     case weatherId >= 600 && weatherId < 700: //id : Snow
       return './video-backgrounds/snow.mp4';
 
-    case weatherId >= 700 && weatherId < 800: //id : Atmosphere
+    case weatherId === 701: // ID : Mist
+      return './video-backgrounds/mist.mp4';
+
+    case weatherId === 711: // ID : Smoke
+      return './video-backgrounds/smoke.mp4';
+
+    case weatherId === 731: // ID : Sand/Dust Whirls
+      return './video-backgrounds/dust.mp4';
+
+    case weatherId === 741: // ID : Fog
+      return './video-backgrounds/fog.mp4';
+
+    case weatherId === 751: // ID : Sand
+      return './video-backgrounds/dust.mp4';
+
+    case weatherId === 761: // ID : Dust
+      return './video-backgrounds/dust.mp4';
+
+    case weatherId === 781: // ID : Tornado
+      return './video-backgrounds/tornado.mp4';
+
+    case weatherId > 702 && weatherId < 800: //id : Atmosphere
       return './video-backgrounds/atmosphere.mp4';
 
     case weatherId === 800: //id : Clear
       return './video-backgrounds/clear-sky.mp4';
 
     case weatherId >= 801 && weatherId < 810: //id : Cloud
-      return './video-backgrounds/dark-cloud.mp4';
+      return './video-backgrounds/clouds.mp4';
 
     default:
       return './video-backgrounds/clear-sky.mp4';
