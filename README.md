@@ -1,6 +1,6 @@
 # Weather App with Api Integration
 
-## Fetches Data through frontend and pulls data from open weather map database and displays on the screen
+## Fetches Data through frontend and pulls data from open weather map backend database through an API and displays on the screen
 
 Api source: https://openweathermap.org/
 
