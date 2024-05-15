@@ -58,12 +58,14 @@ weatherForm.addEventListener('submit', async (event) => {
       displayCurrentWeatherInfo(weatherData);
       if (!city) {
         displayError(
-          'The input you provided is not a City, Please enter a City!'
+          'The input you provided is not a city, Please enter a City!'
         );
       }
     } catch (error) {
       console.log(error);
-      displayError('The input you provided is not a City, Enter a valid City!');
+      displayError(
+        'The input you provided is not a city, Please enter a City!'
+      );
       backgroundSource.src = '';
     }
   } else {
