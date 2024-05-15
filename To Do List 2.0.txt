@@ -1,4 +1,0 @@
-
-Prurediti izgled sucelja 
-
-Pogledat sto sve sadrzi taj current weather api i sto se sve moze dodati
