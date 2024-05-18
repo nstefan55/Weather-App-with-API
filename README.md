@@ -16,6 +16,8 @@ The App also applies and displays background depending on the weather and if the
 *Example of the App UX Design with city Zagreb*
 
 <br>
+<br>
+<br>
 
 ### &copy; 2024 Nikola Štefančić ALl Rights Reserved  
 
