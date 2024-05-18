@@ -1,4 +1,4 @@
-# **Weather App with Api Integration** 
+# Weather App with Api Integration 
 
 
 ## App Description
@@ -8,7 +8,7 @@ The App also applies and displays background depending on the weather and if the
 
 ### Technologies used for this project : HTML5, Bootstrap 5, JavaScript && GSAP (JS Library for Animtaions)
 
-Api Source: https://openweathermap.org/
+**Api Source: https://openweathermap.org/**
 
 ![Capture](https://github.com/nstefan55/Weather-App-with-API/assets/121696125/5a4834e2-2cc4-493d-8149-aed0cab669af)
 
