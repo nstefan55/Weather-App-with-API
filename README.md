@@ -18,5 +18,10 @@ The App also applies and displays background depending on the weather and if the
 
 
 
+
+
+
+
+
 ### &copy; 2024 Nikola Štefančić ALl Rights Reserved  
 
