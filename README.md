@@ -10,7 +10,10 @@ The App also applies and displays background depending on the weather and if the
 
 **Api Source: https://openweathermap.org/**
 
+
+
 ![Capture](https://github.com/nstefan55/Weather-App-with-API/assets/121696125/5a4834e2-2cc4-493d-8149-aed0cab669af)
+*Example of the App UX Design with city Zagreb*
 
 
 
