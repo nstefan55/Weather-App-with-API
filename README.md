@@ -1,4 +1,4 @@
-# ** Weather App with Api Integration ** 
+# **Weather App with Api Integration** 
 
 
 ## App Description
