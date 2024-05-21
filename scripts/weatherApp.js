@@ -305,11 +305,11 @@ function displayError(message) {
 
   const errorMessage = document.querySelector('.js-error-container');
 
+  errorMessage.innerHTML = message;
+
   errorMessage.classList.add('bg-warning');
   errorMessage.classList.add('text-dark');
   errorMessage.classList.add('rounded');
-
-  errorMessage.innerHTML = message;
 
   timeoutId = setTimeout(() => {
     document.querySelector('.js-error-container').classList.add('d-none');
