@@ -53,16 +53,9 @@ weatherForm.addEventListener('submit', async (event) => {
       const weatherData = await getWeatherData(city);
 
       displayCurrentWeatherInfo(weatherData);
-      if (!city) {
-        displayError(
-          'The input you provided is not a city, Please enter a City!'
-        );
-      }
     } catch (error) {
       console.log(error);
-      displayError(
-        'The input you provided is not a city, Please enter a City!'
-      );
+      displayError('City not found. Please enter a City!');
       backgroundSource.src = '';
     }
   } else {
@@ -307,12 +300,9 @@ function displayError(message) {
 
   errorMessage.innerHTML = message;
 
-  errorMessage.classList.add('bg-warning');
-  errorMessage.classList.add('text-dark');
-  errorMessage.classList.add('rounded');
-
   timeoutId = setTimeout(() => {
     document.querySelector('.js-error-container').classList.add('d-none');
+
     showHeadingTitle();
   }, 8000);
 }
