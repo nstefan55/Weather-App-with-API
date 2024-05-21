@@ -1,5 +1,4 @@
 import {
-  renderWeatherInputFades,
   submitCityAndHideHeading,
   hideHeadingTitle,
   showHeadingTitle,
@@ -22,8 +21,6 @@ import { gsapHeadingAnimation } from '../scripts/Animations/animations.js';
 
 import WEATHER_API_KEY from './apiKey.js';
 
-renderWeatherInputFades();
-
 gsapHeadingAnimation();
 
 submitCityAndHideHeading();
@@ -32,7 +29,7 @@ const weatherForm = document.getElementById('weather-form');
 
 const cityInput = document.querySelector('.js-weather-city-input');
 
-const backgroundSource = document.getElementById('background');
+const backgroundSource = document.getElementById('background-video');
 
 const apiKey = WEATHER_API_KEY;
 
@@ -69,8 +66,8 @@ weatherForm.addEventListener('submit', async (event) => {
       backgroundSource.src = '';
     }
   } else {
-    displayError('Please Enter a City!');
-    document.querySelector('.errorContainer').classList.remove('displayNone');
+    displayError('Please enter a City!');
+    document.querySelector('.js-error-container').classList.remove('d-none');
     backgroundSource.src = '';
   }
 });
@@ -106,7 +103,7 @@ function displayCurrentWeatherInfo(data) {
 
     backgroundSource.src = getWeatherBackground(id);
 
-    const weatherHtml = `
+    const weatherHtmlTeamplate = `
     
       <div class="container">
         <div class="row">
@@ -216,13 +213,11 @@ function displayCurrentWeatherInfo(data) {
                 
 
 `;
-    weatherContent.innerHTML = weatherHtml;
+    weatherContent.innerHTML = weatherHtmlTeamplate;
 
-    const errorContainer = document.querySelector('.errorContainer');
+    const errorMessage = document.querySelector('.js-error-container');
 
-    errorContainer.innerHTML = '';
-
-    errorContainer.classList.remove('messageDisplay');
+    errorMessage.innerHTML = '';
   }
 }
 
@@ -308,14 +303,16 @@ function getWeatherEmoji(weatherId) {
 function displayError(message) {
   document.querySelector('.js-main-weather-content').innerHTML = '';
 
-  const errorMessage = document.querySelector('.errorContainer');
+  const errorMessage = document.querySelector('.js-error-container');
 
-  errorMessage.classList.add('messageDisplay');
+  errorMessage.classList.add('bg-warning');
+  errorMessage.classList.add('text-dark');
+  errorMessage.classList.add('rounded');
 
   errorMessage.innerHTML = message;
 
   timeoutId = setTimeout(() => {
-    document.querySelector('.errorContainer').classList.add('displayNone');
+    document.querySelector('.js-error-container').classList.add('d-none');
     showHeadingTitle();
   }, 8000);
 }

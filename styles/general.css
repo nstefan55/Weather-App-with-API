@@ -87,23 +87,7 @@ p {
   }
 }
 
-.flex-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.flex-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.flex-center {
-  display: flex;
-  justify-content: center;
-}
+/* Custom Utilities */
 
 .text-shadow {
   text-shadow: #0000008d 1px 0 10px;
@@ -117,10 +101,4 @@ p {
 }
 .text-shadow-white-2x {
   text-shadow: #ffffffcf 1px 0 10px;
-}
-
-/* Index Positioning */
-
-.z-10 {
-  z-index: 10;
 }

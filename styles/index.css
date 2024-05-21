@@ -40,8 +40,6 @@
   min-height: 100%;
   object-fit: cover;
   z-index: -1;
-
-  pointer-events: none;
   opacity: 0.6;
 }
 
@@ -49,40 +47,13 @@ main {
   padding: 0 2rem;
 }
 
-/* Weather Submit Form */
-
-.weather-city-input {
-  padding: 0.75rem 1.2rem;
-  border: none;
-  border-radius: 10px;
-  -webkit-box-shadow: 0 0 10px #fff;
-  box-shadow: 0 0 10px #fff;
-
-  font-size: 1.4em;
-
+input#weatherCityInput:focus {
   outline: none;
-
-  margin: 3rem 0;
-
-  min-width: 200px;
+  box-shadow: none;
+  border-color: transparent;
 }
 
-.weather-city-input::placeholder {
-  color: var(--secondary-color);
-  font-weight: 500;
-}
-
-.placeholder-fadeOut::placeholder {
-  opacity: 0;
-
-  transition: opacity 0.5s ease-in-out;
-}
-
-.placeholder-fadeIn::placeholder {
-  opacity: 1;
-
-  transition: opacity 0.5s ease-in-out;
-}
+/* Weather Submit Button Custom Styles */
 
 .weather-submit-btn {
   margin-left: 1.5rem;
@@ -115,10 +86,10 @@ main {
   content: '';
   position: absolute;
   background-color: var(--yellow-color);
-  top: 6px;
-  right: 10px;
-  width: 15px;
-  height: 15px;
+  top: 5px;
+  right: 6px;
+  width: 12px;
+  height: 12px;
   border-radius: 100%;
 }
 
@@ -132,26 +103,6 @@ main {
   transform: scale(1.05);
 }
 
-.errorContainer {
-  margin-bottom: 1rem;
-}
-
-.errorContainer.messageDisplay {
-  background-color: var(--primary-color);
-
-  padding: 4rem 6rem;
-
-  border-radius: 20px;
-
-  font-size: 1.5rem;
-
-  font-size: 600;
-}
-
-span.hidden {
-  display: none;
-}
-
 #weatherAppTitle {
   display: flex;
   flex-direction: column;
@@ -160,53 +111,16 @@ span.hidden {
 }
 
 #weatherAppTitle h1.heading {
-  font-size: clamp(2rem, 5vw, 8rem);
-  font-weight: 450;
-  text-transform: capitalize;
-  position: relative;
-  color: #fff;
+  font-size: clamp(2rem, 12vw, 6rem);
 }
 
-#weatherAppTitle h1.heading span.text-3,
-#weatherAppTitle h1.heading span.text-4,
-#weatherAppTitle h1.heading span.text-full {
-  color: var(--yellow-color);
-  font-weight: bold;
-  -webkit-text-shadow: 0 0 10px #fff;
-  text-shadow: 0 0 10px hsla(0, 0%, 100%, 0.314);
-}
-
-#weatherAppTitle p.desc {
+#weatherAppTitle .description {
+  font-size: clamp(0.4rem, 4vw, 1rem);
   text-transform: uppercase;
-  margin: 1rem 0;
-  text-decoration: underline var(--yellow-color);
-  text-underline-offset: 0.8rem;
 }
 
-/* Footer Styling */
-
-.footer {
-  padding: 1.5rem 0;
-  width: 100%;
-
-  display: flex;
-
-  justify-content: center;
-}
-
-.github-logo {
-  margin-left: 0.25rem;
-  text-align: center;
-  color: #fff;
-}
-
-/* Hide Content  */
-
-.errorContainer.displayNone {
-  display: none;
-}
-
-#weatherAppTitle.displayNone {
+/* Hides Full Name When user has animations turned off */
+span.hidden {
   display: none;
 }
 
@@ -217,11 +131,10 @@ span.hidden {
   }
 
   .heading-text,
-  .text-1,
-  .text-2,
-  .text-3,
-  .text-4,
-  .text5,
+  .word-1,
+  .word-2,
+  .word-3,
+  .word-4,
   .cursor {
     display: none !important;
   }

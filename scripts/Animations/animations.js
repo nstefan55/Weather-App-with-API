@@ -17,28 +17,28 @@ export function gsapHeadingAnimation() {
     });
 
     if (index === 0) {
-      timeline.to('.text-1', {
+      timeline.to('.word-1', {
         duration: 1,
         text: word,
       });
     }
 
     if (index === 1) {
-      timeline.to('.text-2', {
+      timeline.to('.word-2', {
         duration: 1,
         text: word,
       });
     }
 
     if (index === 2) {
-      timeline.to('.text-3', {
+      timeline.to('.word-3', {
         duration: 1,
         text: word,
       });
     }
 
     if (index === 3) {
-      timeline.to('.text-4', {
+      timeline.to('.word-4', {
         duration: 1,
         text: word,
       });
