@@ -11,7 +11,8 @@ The App also applies and displays background depending on the weather and if the
 
 <br>
 
-![Capture](https://github.com/nstefan55/Weather-App-with-API/assets/121696125/5a4834e2-2cc4-493d-8149-aed0cab669af)
+![Capture](https://github.com/nstefan55/Weather-App-with-API/assets/121696125/cb744daf-8afd-45a0-ae18-9552ffbd5b97)
+
 _Example of the App UX Design with city Zagreb_
 
 <br>
