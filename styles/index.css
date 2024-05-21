@@ -47,12 +47,6 @@ main {
   padding: 0 2rem;
 }
 
-input#weatherCityInput:focus {
-  outline: none;
-  box-shadow: none;
-  border-color: transparent;
-}
-
 /* Weather Submit Button Custom Styles */
 
 .weather-submit-btn {
