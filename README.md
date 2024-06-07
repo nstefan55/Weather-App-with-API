@@ -18,4 +18,4 @@ _Example of the App UX Design with city Zagreb_
 <br>
 <br>
 
-### &copy; 2024 Nikola Štefančić ALl Rights Reserved
+### &copy; 2024 Nikola Štefančić All Rights Reserved
