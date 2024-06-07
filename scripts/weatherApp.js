@@ -109,7 +109,7 @@ function displayCurrentWeatherInfo(data) {
                   <h1 class="display-3 p-3 mb-3 fw-bold text-nowrap">${city}</h1>
                   <p class="display-4 p-3 fw-bold">${getWeatherEmoji(id)}</p>
                 </div>
-                <p class="display-4 fw-bold  bg-info text-shadow rounded text-center">${formatToCelcius(
+                <p class="display-4 fw-bold bg-info text-shadow rounded text-center">${formatToCelcius(
                   temp
                 )} °C</p>
                 <div
@@ -134,7 +134,7 @@ function displayCurrentWeatherInfo(data) {
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col g-5 g-md-0">
             <div class="card p-4 bg-dark">
               <div class="card-body text-light text-center">
                 <h1 class="fw-bold h1 mb-5">Wind <i class="fa-solid fa-wind ms-3"></i></h1>
@@ -161,7 +161,7 @@ function displayCurrentWeatherInfo(data) {
           </div>
         </div>
         <div class="row mt-5">
-          <div class="col">
+          <div class="col g-3 g-md-0">
             <div class="card p-4 bg-info">
               <div class="card-body text-light text-center">
                 <h1 class="text-dark fw-bold h1 mb-4 text-shadow-white-2x">Pressure</h1>
@@ -169,7 +169,7 @@ function displayCurrentWeatherInfo(data) {
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col g-3 g-md-0">
             <div class="card p-4 bg-info">
               <div class="card-body text-light text-center">
                 <h1 class="text-dark fw-bold h1 mb-4 text-shadow-white-2x">Visibility</h1>
@@ -181,7 +181,7 @@ function displayCurrentWeatherInfo(data) {
           </div>
         </div>
         <div class="row mt-4">
-          <div class="col">
+          <div class="col g-3 g-md-0">
             <div class="card p-4 bg-info">
               <div class="card-body text-light text-center">
                 <h1 class="text-dark fw-bold h1 mb-4 text-shadow-white-2x">Sunset <i class="fa-solid fa-moon"></i></h1>
@@ -191,7 +191,7 @@ function displayCurrentWeatherInfo(data) {
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col g-3 g-md-0">
             <div class="card p-4 bg-info">
               <div class="card-body text-light text-center">
                 <h1 class="text-dark fw-bold h1 mb-4 text-shadow-white-2x">Sunrise <i class="fa-regular fa-sun"></i></h1>
