@@ -161,7 +161,7 @@ function displayCurrentWeatherInfo(data) {
           </div>
         </div>
         <div class="row mt-5">
-          <div class="col g-3 g-md-0">
+          <div class="col gy-3 gy-md-0">
             <div class="card p-4 bg-info">
               <div class="card-body text-light text-center">
                 <h1 class="text-dark fw-bold h1 mb-4 text-shadow-white-2x">Pressure</h1>
@@ -169,7 +169,7 @@ function displayCurrentWeatherInfo(data) {
               </div>
             </div>
           </div>
-          <div class="col g-3 g-md-0">
+          <div class="col gy-3 gy-md-0">
             <div class="card p-4 bg-info">
               <div class="card-body text-light text-center">
                 <h1 class="text-dark fw-bold h1 mb-4 text-shadow-white-2x">Visibility</h1>
@@ -181,7 +181,7 @@ function displayCurrentWeatherInfo(data) {
           </div>
         </div>
         <div class="row mt-4">
-          <div class="col g-3 g-md-0">
+          <div class="col gy-3 gy-md-0">
             <div class="card p-4 bg-info">
               <div class="card-body text-light text-center">
                 <h1 class="text-dark fw-bold h1 mb-4 text-shadow-white-2x">Sunset <i class="fa-solid fa-moon"></i></h1>
@@ -191,7 +191,7 @@ function displayCurrentWeatherInfo(data) {
               </div>
             </div>
           </div>
-          <div class="col g-3 g-md-0">
+          <div class="col gy-3 gy-md-0">
             <div class="card p-4 bg-info">
               <div class="card-body text-light text-center">
                 <h1 class="text-dark fw-bold h1 mb-4 text-shadow-white-2x">Sunrise <i class="fa-regular fa-sun"></i></h1>
