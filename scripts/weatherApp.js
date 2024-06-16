@@ -92,9 +92,9 @@ function displayCurrentWeatherInfo(data) {
       wind: { speed, deg },
     } = data;
 
-    city = checkCityZagreb(cityInput, city);
-
     backgroundSource.src = getWeatherBackground(id);
+
+    city = checkCityZagreb(cityInput, city);
 
     const weatherHtmlTeamplate = `
     
