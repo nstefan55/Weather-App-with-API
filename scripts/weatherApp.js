@@ -1,8 +1,4 @@
-import {
-  submitCityAndHideHeading,
-  hideHeadingTitle,
-  showHeadingTitle,
-} from './Weather Input/input.js';
+import { hideHeadingTitle, showHeadingTitle } from './Weather Input/input.js';
 
 import {
   formatFeelsTemp,
@@ -21,10 +17,6 @@ import { gsapHeadingAnimation } from '../scripts/Animations/animations.js';
 
 import WEATHER_API_KEY from './apiKey.js';
 
-gsapHeadingAnimation();
-
-submitCityAndHideHeading();
-
 const weatherForm = document.getElementById('weather-form');
 
 const cityInput = document.querySelector('.js-weather-city-input');
@@ -34,6 +26,8 @@ const backgroundSource = document.getElementById('background-video');
 const apiKey = WEATHER_API_KEY;
 
 let timeoutId;
+
+gsapHeadingAnimation();
 
 //if user has disabled animations - show full heading
 const hiddenHeading = document.getElementById('hidden-heading');
@@ -304,5 +298,5 @@ function displayError(message) {
     document.querySelector('.js-error-container').classList.add('d-none');
 
     showHeadingTitle();
-  }, 8000);
+  }, 5000);
 }

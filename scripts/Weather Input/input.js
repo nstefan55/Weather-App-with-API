@@ -1,12 +1,12 @@
-export function submitCityAndHideHeading() {
-  const weatherSubmitBtn = document.querySelector('.weather-submit-btn');
+// export function submitCityAndHideHeading() {
+//   const weatherSubmitBtn = document.querySelector('.weather-submit-btn');
 
-  const headingTitle = document.querySelector('.js-weather-app-title');
+//   const headingTitle = document.querySelector('.js-weather-app-title');
 
-  weatherSubmitBtn.addEventListener('click', () => {
-    headingTitle.classList.add('d-none');
-  });
-}
+//   weatherSubmitBtn.addEventListener('click', () => {
+//     headingTitle.classList.add('d-none');
+//   });
+// }
 
 export function hideHeadingTitle() {
   const headingTitle = document.querySelector('.js-weather-app-title');
