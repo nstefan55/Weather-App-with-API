@@ -49,11 +49,13 @@ weatherForm.addEventListener('submit', async (event) => {
       displayCurrentWeatherInfo(weatherData);
     } catch (error) {
       console.log(error);
+      hideHeadingTitle();
       displayError('City not found. Please enter a City!');
       backgroundSource.src = '';
     }
   } else {
     displayError('Please enter a City!');
+    hideHeadingTitle();
     document.querySelector('.js-error-container').classList.remove('d-none');
     backgroundSource.src = '';
   }
