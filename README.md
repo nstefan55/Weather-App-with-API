@@ -1,6 +1,6 @@
 # Weather App with Api Integration
 
-## App - Uploaded by Netlify
+## App Link 
 
 https://weather-official-api-app.netlify.app/
 
