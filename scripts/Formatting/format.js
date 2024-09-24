@@ -30,8 +30,9 @@ export function formatMaxToCelcius(temp_max) {
     : formattedMaxToCelcius;
 }
 
+// format to m/s
 export function formatWindSpeed(speed) {
-  const formattedSpeed = (speed * 1.609344).toFixed(1);
+  const formattedSpeed = (speed * 0.447).toFixed(1);
   return formattedSpeed.endsWith('.0')
     ? formattedSpeed.slice(0, -2)
     : formattedSpeed;

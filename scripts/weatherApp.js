@@ -136,7 +136,7 @@ function displayCurrentWeatherInfo(data) {
                 <h1 class="fw-bold h1 mb-5">Wind <i class="fa-solid fa-wind ms-3"></i></h1>
                 <p class="mb-5 p-3 display-6 fw-bold bg-info text-shadow rounded text-center">${formatWindSpeed(
                   speed
-                )} km/h</p>
+                )} m/s</p>
                 <p class="display-6 p-3 fw-bold bg-info text-shadow rounded text-center">
                   <i class="fa-solid fa-compass compass-icon"></i>
                   ${formatWindDegToDirections(deg)}
