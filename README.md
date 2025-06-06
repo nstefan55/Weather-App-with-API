@@ -9,7 +9,7 @@ https://weather-official-api-app.netlify.app/
 The frontend fetches data and retrieves information from the backend database of the open weather map through an API, which is then displayed for the user on the screen.
 The App also applies and displays background depending on the weather and if the user enters an invalid city name, the app displays an error message
 
-### Technologies used for this project : HTML5, Bootstrap 5, JavaScript && GSAP (JS Library for Animtaions)
+### Technologies used for this project : HTML5, Bootstrap 5, JavaScript && GSAP (JS Library for Animations)
 
 **Api Source: https://openweathermap.org/**
 
